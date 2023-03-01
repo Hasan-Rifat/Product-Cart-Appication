@@ -1,8 +1,18 @@
+import { useState } from "react";
+import Products from "./components/AllProduct/Products/Products";
+import Cart from "./components/Cart/Cart";
+import Navbar from "./components/shared/Navbar";
+
 function App() {
+  const [homePage, setHomePage] = useState(false);
+  const [cartPage, setCartPage] = useState(false);
+
   return (
-    <div className="text-center">
-      <h1>hi React</h1>
-    </div>
+    <>
+      <Navbar setHomePage={setHomePage} setCartPage={setCartPage} />
+      {homePage && <Products />}
+      {cartPage && <Cart />}
+    </>
   );
 }
 
