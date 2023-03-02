@@ -7,16 +7,7 @@ import {
 } from "../action/product/actionType";
 
 const initialState = {
-  products: [
-    {
-      id: 0,
-      name: "Stella Marquez",
-      category: "Maiores architecto a",
-      image: "Ipsum eiusmod ab ve",
-      price: "725",
-      quantity: 9,
-    },
-  ],
+  products: [],
   cart: [],
 };
 
