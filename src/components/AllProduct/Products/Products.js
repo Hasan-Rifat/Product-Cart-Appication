@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import AddProduct from "../AddProduct/AddProduct";
 import ProductItem from "../ProductItem/ProductItem";
 
 const Products = () => {
   const { products } = useSelector((state) => state.product);
+
+  const [pb, setPb] = useState(0);
   let content;
 
   if (products.length === 0) {
@@ -12,10 +14,9 @@ const Products = () => {
   }
 
   if (products.length > 0) {
-    console.log(products);
-    content = products.map((product) => (
-      <ProductItem key={product.id} product={product} />
-    ));
+    content = products.map((product) => {
+      return <ProductItem key={product.id} product={product} setPb={setPb} />;
+    });
   }
 
   return (
@@ -28,7 +29,7 @@ const Products = () => {
         </div>
         <div>
           {/* <!-- Product Input Form --> */}
-          <AddProduct />
+          <AddProduct pb={pb} />
         </div>
       </div>
     </main>

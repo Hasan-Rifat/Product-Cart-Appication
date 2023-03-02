@@ -8,7 +8,7 @@ const AddProduct = () => {
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
 
   const handler = (e) => {
@@ -19,10 +19,11 @@ const AddProduct = () => {
       category,
       image,
       price,
-      quantity,
+      quantity: Number(quantity),
     };
     dispatch(createProduct(data));
   };
+
   return (
     <div class="formContainer">
       <h4 class="formTitle">Add New Product</h4>

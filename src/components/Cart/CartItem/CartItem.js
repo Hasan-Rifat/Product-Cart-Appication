@@ -1,6 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  decrementQuantity,
+  deleteItemCart,
+  incrementQuantity,
+} from "../../../redux/action/product/actionCreator";
+const CartItem = ({
+  item: { name, category, image, price, quantity, id },
+  setNewTotal,
+}) => {
+  const dispatch = useDispatch();
 
-const CartItem = () => {
   return (
     <div class="cartCard">
       <div class="flex items-center col-span-6 space-x-6">
@@ -17,29 +27,38 @@ const CartItem = () => {
           </h4>
           <p class="lws-cartCategory">Men's clothing</p>
           <p>
-            BDT <span class="lws-cartPrice">1100</span>
+            BDT <span class="lws-cartPrice">{quantity * price}</span>
           </p>
         </div>
       </div>
       <div class="flex items-center justify-center col-span-4 mt-4 space-x-8 md:mt-0">
         {/* <!-- amount buttons --> */}
         <div class="flex items-center space-x-4">
-          <button class="lws-incrementQuantity">
+          <button
+            onClick={() => dispatch(incrementQuantity(id))}
+            class="lws-incrementQuantity"
+          >
             <i class="text-lg fa-solid fa-plus"></i>
           </button>
-          <span class="lws-cartQuantity">2</span>
-          <button class="lws-decrementQuantity">
+          <span class="lws-cartQuantity">{quantity}</span>
+          <button
+            onClick={() => dispatch(decrementQuantity(id))}
+            class="lws-decrementQuantity"
+          >
             <i class="text-lg fa-solid fa-minus"></i>
           </button>
         </div>
         {/* <!-- price --> */}
         <p class="text-lg font-bold">
-          BDT <span class="lws-calculatedPrice">2200</span>
+          BDT <span class="lws-calculatedPrice">{quantity * price}</span>
         </p>
       </div>
       {/* <!-- delete button --> */}
       <div class="flex items-center justify-center col-span-2 mt-4 md:justify-end md:mt-0">
-        <button class="lws-removeFromCart">
+        <button
+          onClick={() => dispatch(deleteItemCart(id))}
+          class="lws-removeFromCart"
+        >
           <i class="text-lg text-red-400 fa-solid fa-trash"></i>
         </button>
       </div>

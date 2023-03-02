@@ -4,7 +4,7 @@ import Cart from "./components/Cart/Cart";
 import Navbar from "./components/shared/Navbar";
 
 function App() {
-  const [homePage, setHomePage] = useState(false);
+  const [homePage, setHomePage] = useState(true);
   const [cartPage, setCartPage] = useState(false);
 
   return (

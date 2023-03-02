@@ -1,13 +1,22 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/action/product/actionCreator";
+import { v4 as uuidv4 } from "uuid";
 
 const ProductItem = ({ product }) => {
   const { name, category, image, price, quantity } = product;
   const dispatch = useDispatch();
 
   const addToCartHandler = (item) => {
-    dispatch(addToCart(item));
+    const data = {
+      id: uuidv4(),
+      name: item.name,
+      category: item.category,
+      image: item.image,
+      price: item.price,
+      quantity: item.quantity,
+    };
+    dispatch(addToCart(data));
   };
   return (
     <div class="lws-productCard">
@@ -29,6 +38,7 @@ const ProductItem = ({ product }) => {
           </p>
         </div>
         <button
+          disabled={quantity === 0}
           onClick={() => addToCartHandler(product)}
           class="lws-btnAddToCart"
         >

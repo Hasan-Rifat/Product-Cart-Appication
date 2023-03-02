@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import logo from "../../images/logo.png";
 
 const Navbar = ({ setCartPage, setHomePage }) => {
-  const { cart } = useSelector((state) => state.cart);
+  const { cart } = useSelector((state) => state.product);
 
   return (
     <header>

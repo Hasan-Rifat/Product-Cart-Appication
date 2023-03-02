@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import BillDetails from "./BillDetails/BillDetails";
 import CartItem from "./CartItem/CartItem";
 
 const Cart = () => {
-  const { cart } = useSelector((state) => state.cart);
-
-  const total = cart.reduce((total, item) => total + +item.price, 0);
+  const { cart } = useSelector((state) => state.product);
+  const total = cart.reduce(
+    (total, item) => total + +item.price * item.quantity,
+    0
+  );
 
   let content;
 
