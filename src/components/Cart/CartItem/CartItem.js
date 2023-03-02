@@ -15,11 +15,7 @@ const CartItem = ({
     <div class="cartCard">
       <div class="flex items-center col-span-6 space-x-6">
         {/* <!-- cart image --> */}
-        <img
-          class="lws-cartImage"
-          src="https://i.dummyjson.com/data/products/40/thumbnail.jpg"
-          alt="product"
-        />
+        <img class="lws-cartImage" src={image} alt="product" />
         {/* <!-- cart item info --> */}
         <div class="space-y-2">
           <h4 class="lws-cartName">

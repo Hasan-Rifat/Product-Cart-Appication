@@ -22,7 +22,7 @@ const ProductItem = ({ product }) => {
     <div class="lws-productCard">
       <img
         class="lws-productImage"
-        src="https://i.dummyjson.com/data/products/59/thumbnail.jpg"
+        src={image}
         // {image}
         alt="product"
       />
